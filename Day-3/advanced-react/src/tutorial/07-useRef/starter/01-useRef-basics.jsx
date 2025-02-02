@@ -2,9 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 
 const UseRefBasics = () => {
   const [value, setValue] = useState(0);
+  const refRee = useRef(null);
+  console.log(refRee);
+
+
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault();refRee.current.value = 100;
+    console.log(refRee.current.value );
+    refRee.current.focus();
   };
 
   return (
@@ -14,7 +20,7 @@ const UseRefBasics = () => {
           <label htmlFor='name' className='form-label'>
             Name
           </label>
-          <input type='text' id='name' className='form-input' />
+          <input type='text' ref={refRee} id='name' className='form-input' />
         </div>
         <button type='submit' className='btn btn-block'>
           submit
